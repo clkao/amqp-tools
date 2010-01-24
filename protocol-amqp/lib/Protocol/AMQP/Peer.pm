@@ -44,10 +44,6 @@ has 'api' => (
 with 'Protocol::AMQP::Roles::UserCallbacks',
   'Protocol::AMQP::Roles::SendMethod';
 
-no Moose;
-__PACKAGE__->meta->make_immutable;
-
-
 ##################################
 
 sub connect       { confess("Implement connect()  on " . ref($_[0]) . ", ") }
@@ -322,5 +318,7 @@ sub _pick_best_protocol_version {
   return $all->{$ordered[0]}{value};
 }
 
+no Moose;
+__PACKAGE__->meta->make_immutable;
 
 1;
